@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Calculator</title>
+
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator-container {
+            text-align: center;
+        }
+
+        .calculator-table {
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        .calculator-button {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: rgb(75, 83, 61);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .calculator-input {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+
+        @media (max-width: 480px) {
+            .calculator-keypad {
+                display: none;
+            }
+
+            .calculator-buttons {
+                font-size: larger;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator-container">
+        <table class="calculator-table">
+            <tr>
+                <td colspan="3">
+                    <input type="text" class="calculator-input" id="result-display">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="C" onclick="clearResultDisplay()">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="button" class="calculator-button" value="1" onclick="appendToResultDisplay('1')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="2" onclick="appendToResultDisplay('2')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="3" onclick="appendToResultDisplay('3')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="/" onclick="appendToResultDisplay('/')">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="button" class="calculator-button" value="4" onclick="appendToResultDisplay('4')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="5" onclick="appendToResultDisplay('5')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="6" onclick="appendToResultDisplay('6')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="*" onclick="appendToResultDisplay('*')">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="button" class="calculator-button" value="7" onclick="appendToResultDisplay('7')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="8" onclick="appendToResultDisplay('8')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="9" onclick="appendToResultDisplay('9')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="-" onclick="appendToResultDisplay('-')">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="button" class="calculator-button" value="0" onclick="appendToResultDisplay('0')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="." onclick="appendToResultDisplay('.')">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="=" onclick="calculateResultDisplay()">
+                </td>
+                <td>
+                    <input type="button" class="calculator-button" value="+" onclick="appendToResultDisplay('+')">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function appendToResultDisplay(value) {
+            var result = document.getElementById('result-display');
+            result.value += value;
+        }
+
+        function clearResultDisplay() {
+            var result = document.getElementById('result-display');
+            result.value = '';
+        }
+
+        function calculateResultDisplay() {
+            var result = document.getElementById('result-display');
+            try {
+                result.value = eval(result.value);
+            } catch (error) {
+                result.value = 'Error';
+            }
+        }
+    </script>
+</body>
